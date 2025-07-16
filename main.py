@@ -259,7 +259,7 @@ if __name__ == "__main__":
     # Create trainer
     trainer = EvolutionaryTrainer(
         base_model=base_model,
-        population_size=1000,
+        population_size=10000,
         apply_mutations=0.5,
         mutation_rate=0.01,
         mutation_magnitude=10.0,
@@ -270,4 +270,4 @@ if __name__ == "__main__":
     )
     
     # Train
-    trainer.train(epochs=50)
+    trainer.train(epochs=1000)
