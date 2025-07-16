@@ -256,20 +256,26 @@ class EvolutionaryTrainer:
 
 if __name__ == "__main__":
     # Initialize model
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--population_size", type=int, default=10)
+    parser.add_argument("--batch_size", type=int, default=2048)
+    parser.add_argument("--epochs", type=int, default=1000)
+    args = parser.parse_args()
+    
     base_model = EvoModel()
     
     # Create trainer
     trainer = EvolutionaryTrainer(
         base_model=base_model,
-        population_size=1000,
+        population_size=args.population_size,
         apply_mutations=0.5,
         mutation_rate=0.01,
         mutation_magnitude=10.0,
-        batch_size=2048,
+        batch_size=args.batch_size,
         mutation_scheduler="linear",
         mutation_decay_factor=0.95,
         min_mutation_magnitude=0.00001,
     )
     
     # Train
-    trainer.train(epochs=1000)
+    trainer.train(epochs=args.epochs)
