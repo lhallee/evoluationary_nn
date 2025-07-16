@@ -16,9 +16,11 @@ class EvoModel(nn.Module):
     def __init__(self):
         super(EvoModel, self).__init__()
         self.layers = nn.Sequential(
-            nn.Linear(784, 32),
+            nn.Linear(784, 128),
             nn.ReLU(),
-            nn.Linear(32, 10),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, 10),
         )
     
     def init_weights(self):
