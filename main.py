@@ -127,7 +127,7 @@ class EvolutionaryTrainer:
 
     @torch.no_grad()
     def _oracle(self, model: nn.Module) -> float:
-        loader = Subset(self.train_dataset, np.random.choice(len(self.train_dataset), size=self.batch_size * 10, replace=False))
+        loader = Subset(self.train_dataset, np.random.choice(len(self.train_dataset), size=self.batch_size, replace=False))
         loader = DataLoader(loader, batch_size=self.batch_size, shuffle=True)
         #model.to(self.device)
         total_loss = 0.0
@@ -259,11 +259,11 @@ if __name__ == "__main__":
     # Create trainer
     trainer = EvolutionaryTrainer(
         base_model=base_model,
-        population_size=10000,
+        population_size=1000,
         apply_mutations=0.5,
         mutation_rate=0.01,
         mutation_magnitude=10.0,
-        batch_size=1024,
+        batch_size=2048,
         mutation_scheduler="linear",
         mutation_decay_factor=0.95,
         min_mutation_magnitude=0.00001,
