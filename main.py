@@ -256,6 +256,7 @@ class EvolutionaryTrainer:
 
 if __name__ == "__main__":
     # Initialize model
+    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--population_size", type=int, default=10)
     parser.add_argument("--batch_size", type=int, default=2048)
